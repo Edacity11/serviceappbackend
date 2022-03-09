@@ -1,6 +1,6 @@
 # app/controllers/members_controller.rb
 class MembersController < ApplicationController
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
 
   def show
     user = get_user_from_token
@@ -8,6 +8,12 @@ class MembersController < ApplicationController
       message: "If you see this, you're in!",
       user: user
     }
+  end
+
+  def allUsers
+    @users = User.all
+
+    render json: @users
   end
 
   private

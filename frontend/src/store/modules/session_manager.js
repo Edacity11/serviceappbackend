@@ -3,14 +3,20 @@ import axios from "axios";
 const BASE_URL = "http://localhost:3000/";
 
 const state = {
+  //---For Users--//
+  allUsers: [],
   auth_token: null,
   user: {
     id: null,
     username: null,
     email: null,
+    firstname: null,
+    lastname: null,
+    number: null,
   },
 };
 const getters = {
+  //---For Users--//
   getAuthToken(state) {
     return state.auth_token;
   },
@@ -20,13 +26,31 @@ const getters = {
   getUserID(state) {
     return state.user?.id;
   },
+  getUserFirstname(state) {
+    return state.user?.firstname;
+  },
+  getUserLastname(state) {
+    return state.user?.lastname;
+  },
+  getUserNumber(state) {
+    return state.user?.number;
+  },
   isLoggedIn(state) {
     const loggedOut =
       state.auth_token == null || state.auth_token == JSON.stringify(null);
     return !loggedOut;
   },
+  isLoggedInAdmin(state) {
+    const loggedInAdmin =
+      state.user.email == 'admin@user.com';
+    return loggedInAdmin;
+  },
+  getAllUsers(state) {
+    return state.allUsers;
+  },
 };
 const actions = {
+  //---For Users--//
   registerUser({ commit }, payload) {
     return new Promise((resolve, reject) => {
       axios
@@ -89,8 +113,22 @@ const actions = {
         });
     });
   },
+  addUsers({ commit }) {
+    return new Promise((resolve, reject) => {
+      axios
+        .get(`${BASE_URL}allUsers`)
+        .then((response) => {
+          commit("setUsers", response);
+          resolve(response);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  },
 };
 const mutations = {
+  //---For Users--//
   setUserInfo(state, data) {
     state.user = data.data.user;
     state.auth_token = data.headers.authorization;
@@ -107,9 +145,15 @@ const mutations = {
       username: null,
       email: null,
     };
+    state.allUsers = [];
     state.auth_token = null;
     localStorage.removeItem("auth_token");
     axios.defaults.headers.common["Authorization"] = null;
+  },
+  setUsers(state, data) {
+    data.data.forEach(userRecord => {
+      state.allUsers.push(userRecord);
+    });
   },
 };
 export default {
