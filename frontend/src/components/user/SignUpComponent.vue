@@ -59,9 +59,6 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "SignUpComponent",
-  // computed: {
-  //     ...mapGetters(["getAuthToken", "getUserEmail", "getUserID", "getUserFirstname", "getUserLastname", "getUserNumber", "getAllUsers", "isLoggedIn", "isLoggedInAdmin"]),
-  // },
   data() {
     return {
       signUpEmail: "",

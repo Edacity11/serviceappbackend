@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  booking_date: MyString
+  status: MyString
+  available_date: one
+  available_time: one
+  user: one
+  service: one
+
+two:
+  booking_date: MyString
+  status: MyString
+  available_date: two
+  available_time: two
+  user: two
+  service: two

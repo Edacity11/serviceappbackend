@@ -15,6 +15,7 @@ class MembersController < ApplicationController
 
     render json: @users
   end
+  
 
   private
 

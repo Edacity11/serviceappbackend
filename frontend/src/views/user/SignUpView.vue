@@ -2,7 +2,7 @@
   <sign-up-component />
 </template>
 <script>
-import SignUpComponent from '../components/SignUpComponent.vue';
+import SignUpComponent from '../../components/user/SignUpComponent.vue';
 
 export default {
   name: "SignUpView",

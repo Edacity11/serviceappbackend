@@ -91,7 +91,7 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   name: "SessionManager",
   computed: {
-      ...mapGetters(["getAuthToken", "getUserEmail", "getUserID", "getUserFirstname", "getUserLastname", "getUserNumber", "getAllUsers", "isLoggedIn", "isLoggedInAdmin"]),
+    ...mapGetters(["getAuthToken", "getUserEmail", "getUserID", "getUserFirstname", "getUserLastname", "getUserNumber", "getAllUsers", "isLoggedIn", "isLoggedInAdmin"]),
   },
   data() {
     return {
@@ -145,4 +145,4 @@ export default {
 }
 </script>
 
-<style scoped lang="scss" src="../styles/pages/_SessionManager.scss" />
+<style scoped lang="scss" src="../../styles/pages/_SessionManager.scss" />

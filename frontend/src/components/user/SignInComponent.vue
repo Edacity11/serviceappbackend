@@ -47,6 +47,7 @@ export default {
   },
   methods: {
     ...mapActions(["loginUser", "addUsers"]),
+    ...mapActions("services", ["fetchServices"]),
     onLogin(event) {
         event.preventDefault();
         let data = {
@@ -57,6 +58,7 @@ export default {
         };
         this.loginUser(data);
         this.addUsers();
+        this.fetchServices();
         this.resetData();
         this.$router.push("/");
     },

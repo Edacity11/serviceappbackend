@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  scope :api do
+    resources :categories, only: [:index, :create, :update, :show, :destroy]
+    resources :services, only: [:index, :create, :update, :show, :destroy]
+    resources :available_dates, only: [:index, :create, :show, :destroy]
+    resources :available_times, only: [:index, :create, :show, :destroy]
+    resources :bookings, only: [:index, :create, :update, :show, :destroy]
+  end
+  #resources :services
+  #resources :categories
+  #resources :available_dates
+  #resources :available_times
+  #resources :bookings
   devise_for :users,
              controllers: {
                sessions: 'users/sessions',

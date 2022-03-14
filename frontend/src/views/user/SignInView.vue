@@ -3,7 +3,7 @@
 </template>
 <script>
 // Components
-import SignInComponent from '../components/SignInComponent.vue';
+import SignInComponent from '../../components/user/SignInComponent.vue';
 
 export default {
   name: "SignInView",

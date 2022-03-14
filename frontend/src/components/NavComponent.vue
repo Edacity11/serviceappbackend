@@ -18,29 +18,28 @@
             Home
           </router-link>
 
-          <a class="navbar-item">
-            Documentation
-          </a>
+          <router-link 
+            :to="{ name: 'UserBookingsView', params: { id: Number(this.getUserID) } }"
+            class="navbar-item"
+          >
+            Your bookings
+          </router-link>
 
-          <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-item has-dropdown is-hoverable" v-if="isLoggedInAdmin">
             <a class="navbar-link">
-              More
+              Admin Dashboards
             </a>
 
             <div class="navbar-dropdown">
-              <a class="navbar-item">
-                About
-              </a>
-              <a class="navbar-item">
-                Jobs
-              </a>
-              <a class="navbar-item">
-                Contact
-              </a>
-              <hr class="navbar-divider">
-              <a class="navbar-item">
-                Report an issue
-              </a>
+              <router-link to="/UserRegistrations" class="navbar-item">
+                User Registrations
+              </router-link>
+              <router-link to="/BookingTracker" class="navbar-item">
+                Booking Tracker
+              </router-link>
+              <router-link to="/BookingHistory" class="navbar-item">
+                Booking History
+              </router-link>
             </div>
           </div>
         </div>
@@ -58,9 +57,9 @@
           </div>
           <div class="navbar-item" v-else>
             <div class="buttons">
-              <button @click="logoutUser" href="/" class="button is-danger">
+              <router-link @click="logoutUser" to="/" class="button is-danger">
                 Sign out
-              </button>
+              </router-link>
             </div>
           </div>
         </div>
