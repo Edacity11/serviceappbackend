@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  if Rails.env.development?
+    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "graphql#execute"
+  end
+  post "/graphql", to: "graphql#execute"
   scope :api do
     resources :categories, only: [:index, :create, :update, :show, :destroy]
     resources :services, only: [:index, :create, :update, :show, :destroy]
